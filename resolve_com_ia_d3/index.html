@@ -136,13 +136,13 @@
     .hero__micro svg { width: 16px; height: 16px; color: var(--gelo); flex: none; }
     .mini-autoridade { display: flex; align-items: center; gap: 12px; padding-top: 4px; font-size: 14px;
       line-height: 1.4; color: rgba(255,255,255,.8); }
-    .mini-autoridade img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; object-position: 50% 18%; flex: none;
+    .mini-autoridade img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; object-position: 50% 50%; flex: none;
       border: 2px solid rgba(255,255,255,.2); }
     .mini-autoridade strong { color: #fff; }
     .hero__midia { position: relative; }
-    .hero__foto { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 15%;
+    .hero__foto { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 0%;
       border-radius: var(--raio); box-shadow: 0 30px 60px -30px rgba(0,0,0,.6); }
-    .equipe { position: absolute; left: 12px; right: 12px; bottom: 12px; background: rgba(255,255,255,.96); color: var(--texto);
+    .equipe { position: relative; margin: -56px 12px 0; background: rgba(255,255,255,.96); color: var(--texto);
       border-radius: var(--raio); padding: 16px; box-shadow: var(--sombra); }
     .equipe__topo { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
     .equipe__topo p { font-weight: 700; font-size: 15px; }
@@ -158,7 +158,7 @@
       .hero__data span { font-size: 14px; }
       .hero__grade { grid-template-columns: 7fr 5fr; align-items: center; gap: 56px; padding: 48px 0 96px; }
       .hero__onda { top: auto; bottom: -150px; height: 300px; }
-      .equipe { left: -48px; right: auto; width: 340px; bottom: 24px; }
+      .equipe { position: absolute; margin: 0; left: -56px; right: auto; width: 340px; bottom: -40px; }
     }
 
     /* Esfera "IA trabalhando" (porte do siri-orb da página a2, nas cores novas) */
@@ -484,13 +484,13 @@
           <li><svg aria-hidden="true"><use href="#i-check"/></svg>Acesso por e-mail logo após a compra</li>
         </ul>
         <div class="mini-autoridade">
-          <img src="assets/retrato-240.webp" alt="" width="48" height="48">
+          <img src="assets/marcelo-ia-mini.webp" alt="" width="48" height="48">
           <p>Conduzido por <strong>Marcelo Miranda</strong> · estrategista de marketing e vendas, 13 anos no serviço público federal, especialista em inteligência artificial</p>
         </div>
       </div>
 
       <div class="hero__midia">
-        <img class="hero__foto" src="assets/retrato.webp" alt="Marcelo Miranda, de terno, sentado e sorrindo" width="900" height="1350" fetchpriority="high">
+        <img class="hero__foto" src="assets/marcelo-ia.webp" alt="Marcelo Miranda sorrindo à mesa de trabalho, com assistentes de IA na tela do notebook" width="900" height="1124" fetchpriority="high">
         <div class="equipe">
           <div class="equipe__topo">
             <div class="orb" aria-hidden="true"></div>
