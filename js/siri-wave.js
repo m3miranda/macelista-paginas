@@ -56,13 +56,13 @@ vec3 spectral4(int s){
     return clamp(vec3(abs(x-3.0)-1.0, 2.0-abs(x-2.0), 2.0-abs(x-4.0)), 0.0, 1.0);
 }
 
-/* Paleta da página nova (azul, ciano, âmbar, branco azulado) no lugar do
+/* Paleta da página nova (azul, ciano, índigo, branco azulado) no lugar do
    espectro arco-íris do original, para casar com o azul-marinho do hero. */
 vec3 paleta(int s){
-    if(s==0) return vec3(0.38,0.62,1.00);
-    if(s==1) return vec3(0.40,0.88,1.00);
-    if(s==2) return vec3(1.00,0.68,0.28);
-    return vec3(0.86,0.91,1.00);
+    if(s==0) return vec3(0.30,0.50,1.00);
+    if(s==1) return vec3(0.40,0.85,1.00);
+    if(s==2) return vec3(0.62,0.58,1.00);
+    return vec3(0.88,0.93,1.00);
 }
 
 void mainImage(out vec4 fragColor, in vec2 fragCoord){
