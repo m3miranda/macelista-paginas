@@ -127,8 +127,9 @@
     .hero__copy { display: grid; gap: 14px; align-content: center; }
     .hero__kicker { color: var(--gelo); }
     .hero__sub { color: rgba(255,255,255,.84); max-width: 58ch; }
-    .hero__preco { font-size: 15px; color: rgba(255,255,255,.84); }
-    .hero__preco strong { font-size: 22px; color: #fff; margin-left: 4px; }
+    .hero__preco { display: grid; gap: 2px; font-size: 15px; color: rgba(255,255,255,.84); }
+    .hero__lote-final { font-size: 14px; color: rgba(255,255,255,.62); }
+    .hero__preco strong { font-size: 24px; color: #fff; margin-left: 4px; }
     .hero__micro { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 14px; color: rgba(255,255,255,.8); }
     .hero__micro li { display: inline-flex; align-items: center; gap: 6px; }
     .hero__micro svg { width: 16px; height: 16px; color: var(--gelo); flex: none; }
@@ -332,6 +333,8 @@
     .oferta__lista li::before { content: ""; flex: none; width: 16px; height: 16px; margin-top: 5px; border-radius: 50%; border: 5px solid var(--primaria); }
     .oferta__lista li.bonus::before { border-color: #60A5FA; }
     .preco { text-align: center; border-top: 1px solid var(--borda); padding-top: 20px; }
+    .lote-final { display: flex; justify-content: space-between; align-items: baseline; max-width: 280px; margin: 0 auto 14px; padding: 10px 16px; border: 1px solid var(--borda); border-radius: 10px; font-size: 15px; color: var(--texto-apoio); }
+    .lote-final span:last-child { font-weight: 700; font-size: 18px; color: var(--texto); }
     .preco__rotulo { font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--texto-apoio); }
     .preco__valor { display: flex; justify-content: center; align-items: flex-start; gap: 4px; color: var(--primaria); line-height: 1; margin-top: 6px; }
     .preco__valor small { font-size: 24px; font-weight: 600; margin-top: 10px; }
@@ -473,7 +476,7 @@
         <p class="kicker hero__kicker">Para quem tem a semana cheia de documento, e-mail e cliente</p>
         <h1 class="h1">Pare de explicar seu trabalho para a IA toda vez. Em 1 dia, você monta os assistentes que fazem as tarefas da sua semana do seu jeito.</h1>
         <p class="hero__sub">Proposta, parecer, relatório, resposta a cliente, plano de aula. Ao vivo, você entrega à IA o seu Perfil de Trabalho e sai do sábado com assistentes prontos para usar na segunda. Funciona na versão gratuita e não exige programação.</p>
-        <p class="hero__preco">Ingresso <strong>R$ 37</strong></p>
+        <p class="hero__preco"><span class="hero__lote-final">Lote final R$ 97</span><span class="hero__lote-1">Lote 1 <strong>R$ 37</strong></span></p>
         <div><a class="btn btn--largo-mobile" href="#oferta" data-cta="preco" id="cta-hero">Quero montar meus assistentes <svg aria-hidden="true"><use href="#i-seta"/></svg></a></div>
         <ul class="hero__micro">
           <li><svg aria-hidden="true"><use href="#i-check"/></svg>Certificado de 8 horas</li>
@@ -763,7 +766,8 @@
           <li class="bonus">Grupo de WhatsApp para os materiais</li>
         </ul>
         <div class="preco">
-          <p class="preco__rotulo">Ingresso de lançamento</p>
+          <p class="lote-final"><span>Lote final</span><span>R$ 97</span></p>
+          <p class="preco__rotulo">Lote 1 · valor atual</p>
           <p class="preco__valor"><small>R$</small><strong>37</strong></p>
           <p class="preco__data">12 de dezembro · 9h às 17h (horário de Brasília) · ao vivo</p>
         </div>
@@ -843,7 +847,7 @@
   <div class="hero__onda" aria-hidden="true" style="top:auto;bottom:-60px"><canvas class="siri-wave" data-siri-wave></canvas></div>
   <div class="container">
     <h2 class="h2" id="t-final">Na segunda-feira, o seu trabalho chega pronto para você revisar e assinar.</h2>
-    <p class="final__linha">R$ 37 · 12 de dezembro · ao vivo · garantia de 7 dias</p>
+    <p class="final__linha">Lote 1 R$ 37 (lote final R$ 97) · 12 de dezembro · ao vivo · garantia de 7 dias</p>
     <a class="btn" href="#oferta" data-cta="preco">Quero montar meus assistentes <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
   </div>
 </section>
@@ -857,7 +861,7 @@
 
 <!-- Barra fixa do celular -->
 <div class="barra" id="barra" aria-hidden="true">
-  <p><strong>R$ 37</strong>12/12 · ao vivo</p>
+  <p><strong>R$ 37</strong>Lote 1 · 12/12 ao vivo</p>
   <a class="btn" href="#oferta" data-cta="preco" tabindex="-1">Quero minha vaga</a>
 </div>
 
