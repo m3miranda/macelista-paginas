@@ -1,6 +1,10 @@
 # Páginas Macelista
 
-Cada pasta é uma página, com o mesmo nome do caminho no site (ex.: `resolve_com_ia_d3/` → macelista.com.br/resolve_com_ia_d3/).
+Publicado pelo GitHub Pages em https://paginas.macelista.com.br (DNS no Cloudflare, CNAME para m3miranda.github.io).
+Cada pasta é uma página: `resolve_com_ia_d3/` → https://paginas.macelista.com.br/resolve_com_ia_d3/
+A raiz redireciona para macelista.com.br.
+
+Página encerrada: troque o `index.html` da pasta por um redirecionamento (modelo no `index.html` da raiz) ou crie uma regra de redirecionamento no Cloudflare.
 
 ## resolve_com_ia_d3 · Protocolo Resolve com IA, evento de 12/12
 
