@@ -1,4 +1,8 @@
-# Protocolo Resolve com IA · página do evento de 12/12 (versão D3)
+# Páginas Macelista
+
+Cada pasta é uma página, com o mesmo nome do caminho no site (ex.: `resolve_com_ia_d3/` → macelista.com.br/resolve_com_ia_d3/).
+
+## resolve_com_ia_d3 · Protocolo Resolve com IA, evento de 12/12
 
 Página de vendas do evento ao vivo, refeita no estilo Trust & Authority (azul-marinho, botão âmbar, títulos em EB Garamond, corpo em Inter Tight).
 
