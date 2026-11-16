@@ -429,7 +429,9 @@
       .orb::before, .orb-glow::before { animation: none; }
       .barra { transition: none; }
     }
-  </style>
+  @media (max-width:599px) and (max-height:760px){.hero__onda{height:96px;margin-bottom:4px}}
+@media (max-width:599px) and (max-height:700px){.hero__onda{height:72px;margin-bottom:0}.hero__preco{margin-top:12px;margin-bottom:12px}}
+</style>
 
   <script>document.documentElement.classList.add('js');</script>
 
@@ -498,7 +500,7 @@
         <div class="hero__onda" aria-hidden="true"><canvas class="siri-wave" data-siri-wave></canvas></div>
         <p class="kicker hero__kicker">Para quem quer dominar a Inteligência Artificial em qualquer profissão</p>
         <h1 class="h1">Em 1 dia, você monta assistentes de IA que executam tarefas do seu jeito 10 vezes mais rápido.</h1>
-        <p class="hero__sub">Proposta, parecer, relatório, resposta a cliente, plano de aula. Ao vivo, você entrega à IA o seu Perfil de Trabalho e sai do sábado com assistentes prontos para usar na segunda. Funciona na versão gratuita e não exige programação.</p>
+        <p class="hero__sub">Consultor de bolso com acesso ao seu computador, layout e proposta, parecer técnico impecável, agente de atendimento autônomo. Ao vivo, você sai do sábado com esses assistentes prontos e funcionando. Não exige programação: você monta tudo conversando.</p>
         <p class="hero__preco"><span class="hero__lote-final">Lote final R$ 97</span><span class="hero__lote-1">Lote 1 <strong>R$ 37</strong></span></p>
         <div><a class="btn btn--largo-mobile" href="#oferta" data-cta="preco" id="cta-hero">Quero montar meus assistentes <svg aria-hidden="true"><use href="#i-seta"/></svg></a></div>
         <ul class="hero__micro">
