@@ -9,9 +9,7 @@
   <link rel="icon" href="https://macelista.com.br/resolve_com_ia_d2/assets/favicon-32.png">
 
   <link rel="preload" href="assets/fonts/inter-tight-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <link rel="preload" href="assets/fonts/eb-garamond-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
 
   <style>
     @font-face { font-family: "Inter Tight"; font-style: normal; font-weight: 400 800; font-display: swap;
@@ -20,6 +18,19 @@
     @font-face { font-family: "Inter Tight"; font-style: normal; font-weight: 400 800; font-display: swap;
       src: url("assets/fonts/inter-tight-latin-ext.woff2") format("woff2");
       unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+
+    @font-face { font-family: "EB Garamond"; font-style: italic; font-weight: 500; font-display: swap;
+      src: url("assets/fonts/eb-garamond-italic-latin-ext.woff2") format("woff2");
+      unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+    @font-face { font-family: "EB Garamond"; font-style: italic; font-weight: 500; font-display: swap;
+      src: url("assets/fonts/eb-garamond-italic-latin.woff2") format("woff2");
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+    @font-face { font-family: "EB Garamond"; font-style: normal; font-weight: 500 600; font-display: swap;
+      src: url("assets/fonts/eb-garamond-normal-latin-ext.woff2") format("woff2");
+      unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+    @font-face { font-family: "EB Garamond"; font-style: normal; font-weight: 500 600; font-display: swap;
+      src: url("assets/fonts/eb-garamond-normal-latin.woff2") format("woff2");
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
 
     /* ===== Tokens (contraste medido: ver spec) ===== */
     :root {
@@ -218,6 +229,12 @@
     @media (min-width: 900px) { .rolo--videos { grid-auto-columns: calc((100% - 48px) / 4); } }
     .video__quadro { position: relative; aspect-ratio: 9 / 16; border-radius: var(--raio); overflow: hidden; background: var(--noite); box-shadow: var(--sombra); }
     .video__quadro iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .video__capa { display: block; width: 100%; padding: 0; border: 0; cursor: pointer; }
+    .video__capa img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; }
+    .video__play { position: absolute; left: 50%; top: 56.8%; width: 64px; height: 64px; margin: -32px 0 0 -32px; border-radius: 50%;
+      display: grid; place-items: center; background: rgba(255,255,255,.95); color: var(--primaria); box-shadow: 0 10px 30px -10px rgba(0,0,0,.6); transition: transform .15s; }
+    .video__play svg { width: 28px; height: 28px; margin-left: 3px; }
+    .video__capa:hover .video__play { transform: scale(1.06); }
     .entrega { background: var(--papel); border: 2px dashed var(--borda); border-radius: var(--raio); overflow: hidden; }
     .entrega__print { aspect-ratio: 4 / 3; display: grid; place-items: center; text-align: center; padding: 16px;
       background: repeating-linear-gradient(135deg, transparent 0 14px, rgba(15,23,42,.035) 14px 15px), var(--primaria-clara);
@@ -231,6 +248,7 @@
     .print { background: var(--papel); border: 1px solid var(--borda); border-radius: var(--raio); padding: 8px; box-shadow: var(--sombra); align-self: start; }
     .print img { border-radius: 8px; width: 100%; }
     .rolo .print img { max-height: 340px; object-fit: contain; }
+    #rolo-vozes { align-items: center; }
 
     /* ===== 4. Dores ===== */
     .dores { display: grid; gap: 12px; }
@@ -474,6 +492,7 @@
 
     <div class="hero__grade">
       <div class="hero__copy">
+        <p class="kicker hero__kicker">Para quem quer dominar a Inteligência Artificial no trabalho, de um jeito simples</p>
         <h1 class="h1">Em 1 dia, você monta assistentes de IA que executam tarefas do seu jeito 10 vezes mais rápido.</h1>
         <p class="hero__sub">Proposta, parecer, relatório, resposta a cliente, plano de aula. Ao vivo, você entrega à IA o seu Perfil de Trabalho e sai do sábado com assistentes prontos para usar na segunda. Funciona na versão gratuita e não exige programação.</p>
         <p class="hero__preco"><span class="hero__lote-final">Lote final R$ 97</span><span class="hero__lote-1">Lote 1 <strong>R$ 37</strong></span></p>
@@ -530,13 +549,13 @@
     <!-- Depoimentos em vídeo (Panda, 9:16), os mesmos sete da página A2 -->
     <div class="revelar">
       <ul class="rolo rolo--videos" id="rolo-videos" tabindex="0" aria-label="Depoimentos em vídeo">
-        <li class="video"><div class="video__quadro"><iframe id="panda-e640f9a0-5efe-4dda-a521-0e51b51ee5ad" src="https://player-vz-65fe264c-68c.tv.pandavideo.com.br/embed/?v=e640f9a0-5efe-4dda-a521-0e51b51ee5ad" title="Depoimento em vídeo 1" loading="lazy" allowfullscreen allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture"></iframe></div></li>
-        <li class="video"><div class="video__quadro"><iframe id="panda-945c9113-7667-4536-8322-d56af89569b3" src="https://player-vz-65fe264c-68c.tv.pandavideo.com.br/embed/?v=945c9113-7667-4536-8322-d56af89569b3" title="Depoimento em vídeo 2" loading="lazy" allowfullscreen allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture"></iframe></div></li>
-        <li class="video"><div class="video__quadro"><iframe id="panda-5f540c1a-228d-4b0f-9d44-d84f2e3cc65a" src="https://player-vz-65fe264c-68c.tv.pandavideo.com.br/embed/?v=5f540c1a-228d-4b0f-9d44-d84f2e3cc65a" title="Depoimento em vídeo 3" loading="lazy" allowfullscreen allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture"></iframe></div></li>
-        <li class="video"><div class="video__quadro"><iframe id="panda-7d5f11e4-add4-46ab-9462-8a01b9bc89ac" src="https://player-vz-65fe264c-68c.tv.pandavideo.com.br/embed/?v=7d5f11e4-add4-46ab-9462-8a01b9bc89ac" title="Depoimento em vídeo 4" loading="lazy" allowfullscreen allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture"></iframe></div></li>
-        <li class="video"><div class="video__quadro"><iframe id="panda-91b77c9a-8932-4023-a248-ca37c774080c" src="https://player-vz-65fe264c-68c.tv.pandavideo.com.br/embed/?v=91b77c9a-8932-4023-a248-ca37c774080c" title="Depoimento em vídeo 5" loading="lazy" allowfullscreen allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture"></iframe></div></li>
-        <li class="video"><div class="video__quadro"><iframe id="panda-2f0f3c7c-4eb1-4e11-9412-ec07d0fae846" src="https://player-vz-65fe264c-68c.tv.pandavideo.com.br/embed/?v=2f0f3c7c-4eb1-4e11-9412-ec07d0fae846" title="Depoimento em vídeo 6" loading="lazy" allowfullscreen allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture"></iframe></div></li>
-        <li class="video"><div class="video__quadro"><iframe id="panda-4d1e2d26-8564-4ac5-9724-7c618c3b86dc" src="https://player-vz-65fe264c-68c.tv.pandavideo.com.br/embed/?v=4d1e2d26-8564-4ac5-9724-7c618c3b86dc" title="Depoimento em vídeo 7" loading="lazy" allowfullscreen allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture"></iframe></div></li>
+        <li class="video"><button class="video__quadro video__capa" type="button" data-video="e640f9a0-5efe-4dda-a521-0e51b51ee5ad" aria-label="Assistir ao depoimento 1"><img src="assets/videos/poster-1.webp" alt="" width="360" height="563" loading="lazy"><span class="video__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></button></li>
+        <li class="video"><button class="video__quadro video__capa" type="button" data-video="945c9113-7667-4536-8322-d56af89569b3" aria-label="Assistir ao depoimento 2"><img src="assets/videos/poster-2.webp" alt="" width="360" height="563" loading="lazy"><span class="video__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></button></li>
+        <li class="video"><button class="video__quadro video__capa" type="button" data-video="5f540c1a-228d-4b0f-9d44-d84f2e3cc65a" aria-label="Assistir ao depoimento 3"><img src="assets/videos/poster-3.webp" alt="" width="360" height="563" loading="lazy"><span class="video__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></button></li>
+        <li class="video"><button class="video__quadro video__capa" type="button" data-video="7d5f11e4-add4-46ab-9462-8a01b9bc89ac" aria-label="Assistir ao depoimento 4"><img src="assets/videos/poster-4.webp" alt="" width="360" height="563" loading="lazy"><span class="video__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></button></li>
+        <li class="video"><button class="video__quadro video__capa" type="button" data-video="91b77c9a-8932-4023-a248-ca37c774080c" aria-label="Assistir ao depoimento 5"><img src="assets/videos/poster-5.webp" alt="" width="360" height="563" loading="lazy"><span class="video__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></button></li>
+        <li class="video"><button class="video__quadro video__capa" type="button" data-video="2f0f3c7c-4eb1-4e11-9412-ec07d0fae846" aria-label="Assistir ao depoimento 6"><img src="assets/videos/poster-6.webp" alt="" width="360" height="563" loading="lazy"><span class="video__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></button></li>
+        <li class="video"><button class="video__quadro video__capa" type="button" data-video="4d1e2d26-8564-4ac5-9724-7c618c3b86dc" aria-label="Assistir ao depoimento 7"><img src="assets/videos/poster-7.webp" alt="" width="360" height="563" loading="lazy"><span class="video__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></button></li>
       </ul>
       <div class="setas">
         <button class="seta" type="button" data-rolar="rolo-videos" data-dir="-1" aria-label="Depoimento anterior"><svg aria-hidden="true"><use href="#i-esq"/></svg></button>
@@ -613,7 +632,7 @@
   <div class="container virada revelar">
     <div class="orb-glow" aria-hidden="true"><div class="orb orb--grande"></div></div>
     <div>
-      <p class="kicker">A verdade que ninguém te contou</p>
+      <p class="kicker">Por que a IA erra com você</p>
       <h2 class="h2" id="t-virada" style="margin:12px 0 16px">A IA responde para uma pessoa média porque ninguém contou a ela quem você é.</h2>
       <p>Você tem cargo, rotina e uma semana que se repete. Os vídeos soltos mostram o que a IA faz. No sábado, você coloca na ordem certa o que ela precisa saber sobre o seu trabalho, e ela passa a responder como alguém da sua equipe.</p>
     </div>
@@ -873,6 +892,19 @@
   document.querySelectorAll('[data-cta="checkout"]').forEach(function (b) {
     b.setAttribute('href', CHECKOUT_URL);
     b.addEventListener('click', function () { if (typeof window.fbq === 'function') window.fbq('track', 'InitiateCheckout'); });
+  });
+
+  /* Depoimentos: o player do Panda só carrega quando a pessoa toca no vídeo */
+  document.querySelectorAll('.video__capa').forEach(function (capa) {
+    capa.addEventListener('click', function () {
+      var f = document.createElement('iframe');
+      f.src = 'https://player-vz-65fe264c-68c.tv.pandavideo.com.br/embed/?v=' + capa.dataset.video + '&autoplay=true';
+      f.title = capa.getAttribute('aria-label');
+      f.allow = 'accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;fullscreen';
+      f.setAttribute('allowfullscreen', '');
+      var q = document.createElement('div'); q.className = 'video__quadro'; q.appendChild(f);
+      capa.replaceWith(q);
+    });
   });
 
   /* Setas dos carrosséis */
