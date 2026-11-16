@@ -56,15 +56,6 @@ vec3 spectral4(int s){
     return clamp(vec3(abs(x-3.0)-1.0, 2.0-abs(x-2.0), 2.0-abs(x-4.0)), 0.0, 1.0);
 }
 
-/* Paleta da página nova (azul, ciano, índigo, branco azulado) no lugar do
-   espectro arco-íris do original, para casar com o azul-marinho do hero. */
-vec3 paleta(int s){
-    if(s==0) return vec3(0.30,0.50,1.00);
-    if(s==1) return vec3(0.40,0.85,1.00);
-    if(s==2) return vec3(0.62,0.58,1.00);
-    return vec3(0.88,0.93,1.00);
-}
-
 void mainImage(out vec4 fragColor, in vec2 fragCoord){
     vec2 R = iResolution.xy;
     float aspect = R.x / R.y;
@@ -99,7 +90,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord){
     float bandAmt    = 1e-4 * BAND_FILL * inten;
     vec3 num = vec3(0.0), den = vec3(0.0);
     for(int s = 0; s < 4; s++){
-        vec3 hue = mix(vec3(1.0), paleta(s), res);
+        vec3 hue = mix(vec3(1.0), spectral4(s), res);
         den += hue;
         float ab = mix(-AB, AB, float(s)/3.0);
         float yL = A2 * env * res * sin(p.x*ABER_FREQ + drift + ab);

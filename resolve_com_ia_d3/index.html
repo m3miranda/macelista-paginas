@@ -126,15 +126,19 @@
     .hero::before { content: ""; position: absolute; inset: 0; z-index: -2;
       background: radial-gradient(70% 55% at 85% 10%, rgba(11,31,77,.55), transparent 70%),
                   radial-gradient(60% 50% at 0% 100%, rgba(11,31,77,.45), transparent 70%); }
-    .hero__onda { position: absolute; z-index: -1; left: 0; right: 0; top: 44px; height: 170px; pointer-events: none; opacity: .9; }
-    .siri-wave { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-    .siri-wave--sem-webgl { background: radial-gradient(60% 40% at 50% 50%, rgba(96,165,250,.35), rgba(165,180,252,.15) 45%, transparent 75%); }
+    /* Onda "Siri" da A2: no fluxo, entre a data e o texto. O canvas é transparente
+       e maior que o bloco (210%), então a luz transborda sem empurrar nada. */
+    .hero__onda { position: relative; height: 160px; margin: 0 calc(var(--margem) * -1) 8px; pointer-events: none; }
+    .hero__onda .siri-wave { position: absolute; top: 50%; left: 0; width: 100%; height: 210%; transform: translateY(-50%); display: block; background: transparent; }
+    .onda-fundo { position: absolute; z-index: -1; left: 0; right: 0; bottom: -60px; height: 260px; pointer-events: none; }
+    .onda-fundo .siri-wave { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+    .siri-wave--sem-webgl { background: radial-gradient(60% 45% at 50% 55%, rgba(255,120,200,.55) 0%, rgba(120,90,255,.35) 35%, rgba(60,200,255,.18) 60%, transparent 80%); }
     .hero__topo { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 0 8px; }
     .hero__logo { width: 140px; height: auto; }
     .hero__data { text-align: right; line-height: 1.25; }
     .hero__data strong { display: block; font-size: 18px; font-weight: 700; letter-spacing: -.01em; }
     .hero__data span { font-size: 12px; color: rgba(255,255,255,.8); }
-    .hero__grade { display: grid; gap: 40px; padding: 64px 0 56px; }
+    .hero__grade { display: grid; gap: 40px; padding: 0 0 56px; }
     .hero__copy { display: grid; gap: 14px; align-content: center; }
     .hero__kicker { color: var(--gelo); }
     .hero__sub { color: rgba(255,255,255,.84); max-width: 58ch; }
@@ -167,8 +171,8 @@
       .hero__logo { width: 180px; }
       .hero__data strong { font-size: 24px; }
       .hero__data span { font-size: 14px; }
-      .hero__grade { grid-template-columns: 7fr 5fr; align-items: center; gap: 56px; padding: 48px 0 96px; }
-      .hero__onda { top: auto; bottom: -150px; height: 300px; }
+      .hero__grade { grid-template-columns: 7fr 5fr; align-items: center; gap: 56px; padding: 8px 0 96px; }
+      .hero__onda { height: 150px; margin: 0 0 12px; }
       .equipe { position: absolute; margin: 0; left: -56px; right: auto; width: 340px; bottom: -40px; }
     }
 
@@ -483,7 +487,6 @@
 
 <!-- ============ 1. HERO ============ -->
 <header class="hero" id="topo">
-  <div class="hero__onda" aria-hidden="true"><canvas class="siri-wave" data-siri-wave></canvas></div>
   <div class="container">
     <div class="hero__topo">
       <img class="hero__logo" src="assets/logo-branca.webp" alt="Protocolo Resolve com iA" width="946" height="341" fetchpriority="high">
@@ -492,7 +495,8 @@
 
     <div class="hero__grade">
       <div class="hero__copy">
-        <p class="kicker hero__kicker">Para quem quer dominar a Inteligência Artificial no trabalho, de um jeito simples</p>
+        <div class="hero__onda" aria-hidden="true"><canvas class="siri-wave" data-siri-wave></canvas></div>
+        <p class="kicker hero__kicker">Para quem quer dominar a Inteligência Artificial em qualquer profissão</p>
         <h1 class="h1">Em 1 dia, você monta assistentes de IA que executam tarefas do seu jeito 10 vezes mais rápido.</h1>
         <p class="hero__sub">Proposta, parecer, relatório, resposta a cliente, plano de aula. Ao vivo, você entrega à IA o seu Perfil de Trabalho e sai do sábado com assistentes prontos para usar na segunda. Funciona na versão gratuita e não exige programação.</p>
         <p class="hero__preco"><span class="hero__lote-final">Lote final R$ 97</span><span class="hero__lote-1">Lote 1 <strong>R$ 37</strong></span></p>
@@ -863,7 +867,7 @@
 
 <!-- ============ 15. FECHAMENTO ============ -->
 <section class="secao final" aria-labelledby="t-final">
-  <div class="hero__onda" aria-hidden="true" style="top:auto;bottom:-60px"><canvas class="siri-wave" data-siri-wave></canvas></div>
+  <div class="onda-fundo" aria-hidden="true"><canvas class="siri-wave" data-siri-wave></canvas></div>
   <div class="container">
     <h2 class="h2" id="t-final">Na segunda-feira, o seu trabalho chega pronto para você revisar e assinar.</h2>
     <p class="final__linha">Lote 1 R$ 37 (lote final R$ 97) · 12 de dezembro · ao vivo · garantia de 7 dias</p>
