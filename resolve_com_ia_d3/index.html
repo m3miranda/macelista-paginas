@@ -140,7 +140,8 @@
     .hero__data span { font-size: 12px; color: rgba(255,255,255,.8); }
     .hero__grade { display: grid; gap: 40px; padding: 0 0 56px; }
     .hero__copy { display: grid; gap: 14px; align-content: center; }
-    .hero__kicker { color: var(--gelo); }
+    .hero .hero__kicker { color: #E6EEFF; font-weight: 500; }
+    .hero .hero__kicker strong { color: #fff; font-weight: 800; }
     .hero__sub { color: rgba(255,255,255,.84); max-width: 58ch; }
     .hero__preco { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; font-size: 15px; color: rgba(255,255,255,.84); }
     .hero__lote-final { padding-right: 14px; border-right: 1px solid rgba(255,255,255,.25); }
@@ -431,6 +432,11 @@
     }
   @media (max-width:599px) and (max-height:760px){.hero__onda{height:96px;margin-bottom:4px}}
 @media (max-width:599px) and (max-height:700px){.hero__onda{height:72px;margin-bottom:0}.hero__preco{margin-top:12px;margin-bottom:12px}}
+    .print img { cursor: zoom-in; }
+    .ampliar { position: fixed; inset: 0; z-index: 9999; background: rgba(5,7,13,.96); display: flex; align-items: center; justify-content: center; padding: 16px; overflow: auto; }
+    .ampliar[hidden] { display: none; }
+    .ampliar img { max-width: min(100%, 720px); max-height: none; border-radius: 10px; cursor: zoom-out; margin: auto; }
+    .ampliar__fechar { position: fixed; top: 12px; right: 12px; width: 44px; height: 44px; border-radius: 50%; border: 0; background: #fff; color: #05070D; font-size: 24px; line-height: 1; cursor: pointer; }
 </style>
 
   <script>document.documentElement.classList.add('js');</script>
@@ -498,8 +504,8 @@
     <div class="hero__grade">
       <div class="hero__copy">
         <div class="hero__onda" aria-hidden="true"><canvas class="siri-wave" data-siri-wave></canvas></div>
-        <p class="kicker hero__kicker">Para quem quer dominar a Inteligência Artificial em qualquer profissão</p>
-        <h1 class="h1">Em 1 dia, você monta assistentes de IA que executam tarefas do seu jeito 10 vezes mais rápido.</h1>
+        <p class="kicker hero__kicker"><span>Pare um <strong>único dia</strong> e venha <strong>dominar</strong> IA</span></p>
+        <h1 class="h1">Em 1 dia, você sai com sua rotina mapeada pela IA, um assistente de bolso no WhatsApp 24/7 e executores de tarefas com precisão.</h1>
         <p class="hero__sub">Consultor de bolso com acesso ao seu computador, layout e proposta, parecer técnico impecável, agente de atendimento autônomo. Ao vivo, você sai do sábado com esses assistentes prontos e funcionando. Não exige programação: você monta tudo conversando.</p>
         <p class="hero__preco"><span class="hero__lote-final">Lote final R$ 97</span><span class="hero__lote-1">Lote 1 <strong>R$ 37</strong></span></p>
         <div><a class="btn btn--largo-mobile" href="#oferta" data-cta="preco" id="cta-hero">Quero montar meus assistentes <svg aria-hidden="true"><use href="#i-seta"/></svg></a></div>
@@ -904,6 +910,55 @@
       capa.replaceWith(q);
     });
   });
+
+
+  /* Prints: tocar amplia em tela cheia; tocar de novo, no X ou Esc fecha */
+  (function () {
+    var caixa = document.createElement('div'); caixa.className = 'ampliar'; caixa.hidden = true;
+    caixa.setAttribute('role', 'dialog'); caixa.setAttribute('aria-modal', 'true'); caixa.setAttribute('aria-label', 'Print ampliado');
+    caixa.innerHTML = '<button class="ampliar__fechar" type="button" aria-label="Fechar">×</button><img alt="">';
+    document.body.appendChild(caixa);
+    var foto = caixa.querySelector('img'), origem = null;
+    function fechar() { caixa.hidden = true; document.documentElement.style.overflow = ''; if (origem) origem.focus(); }
+    caixa.addEventListener('click', fechar);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !caixa.hidden) fechar(); });
+    document.querySelectorAll('.print img').forEach(function (img) {
+      img.setAttribute('tabindex', '0'); img.setAttribute('role', 'button');
+      function abrir() { origem = img; foto.src = img.currentSrc || img.src; foto.alt = img.alt; caixa.hidden = false;
+        document.documentElement.style.overflow = 'hidden'; caixa.querySelector('button').focus();
+        if (window.clarity) clarity('event', 'ampliou_print'); }
+      img.addEventListener('click', abrir);
+      img.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); abrir(); } });
+    });
+  })();
+
+  /* Clarity: origem do anúncio em cada sessão e momentos-chave da página */
+  (function () {
+    if (!window.clarity) return;
+    var q = new URLSearchParams(location.search);
+    ['utm_source', 'utm_campaign', 'utm_medium', 'utm_content', 'utm_term'].forEach(function (k) {
+      var v = q.get(k); if (v) clarity('set', k, v.slice(0, 200));
+    });
+    document.querySelectorAll('[data-cta="checkout"]').forEach(function (b) {
+      b.addEventListener('click', function () { clarity('event', 'clicou_checkout'); clarity('upgrade', 'checkout'); });
+    });
+    document.querySelectorAll('[data-cta]:not([data-cta="checkout"])').forEach(function (b) {
+      b.addEventListener('click', function () { clarity('event', 'clicou_cta_' + (b.id || b.dataset.cta)); });
+    });
+    document.querySelectorAll('.video__capa').forEach(function (c) {
+      c.addEventListener('click', function () { clarity('event', 'play_depoimento'); });
+    });
+    document.querySelectorAll('details').forEach(function (d) {
+      d.addEventListener('toggle', function () { if (d.open) clarity('event', 'abriu_faq'); });
+    });
+    if ('IntersectionObserver' in window) {
+      [['#oferta', 'viu_oferta'], ['#rolo-videos', 'viu_videos'], ['#rolo-vozes', 'viu_prints']].forEach(function (par) {
+        var el = document.querySelector(par[0]); if (!el) return;
+        var o = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { clarity('event', par[1]); o.disconnect(); } }, { threshold: 0.3 });
+        o.observe(el);
+      });
+    }
+  })();
 
   /* Setas dos carrosséis */
   document.querySelectorAll('[data-rolar]').forEach(function (s) {
