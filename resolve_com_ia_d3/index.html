@@ -437,6 +437,47 @@
     .ampliar[hidden] { display: none; }
     .ampliar img { max-width: min(100%, 720px); max-height: none; border-radius: 10px; cursor: zoom-out; margin: auto; }
     .ampliar__fechar { position: fixed; top: 12px; right: 12px; width: 44px; height: 44px; border-radius: 50%; border: 0; background: #fff; color: #05070D; font-size: 24px; line-height: 1; cursor: pointer; }
+    /* Oferta v2 */
+    .destaque-azul { color: #2F45A0; }
+    .oferta { --azul-oferta: #2F45A0; border: 1px solid #DCE3EE; border-radius: 22px; padding: 0; gap: 0; overflow: hidden;
+      box-shadow: 0 24px 48px -28px rgba(11,31,77,.35); }
+    .oferta > .oferta__logo, .oferta > .oferta__lista, .oferta > .oferta__extras { margin-left: 24px; margin-right: 24px; }
+    .oferta > .oferta__logo { justify-self: start; margin-top: 28px; width: 132px; height: 48px; background: var(--azul-oferta); }
+    .oferta__lista { gap: 12px; margin-top: 18px; padding-bottom: 18px; border-bottom: 1px solid #E2E8F0; }
+    .oferta__lista li { align-items: flex-start; gap: 14px; font-size: 16px; }
+    .oferta__lista li::before { content: none; }
+    .ic-check { flex: none; width: 24px; height: 24px; }
+    .ic-check circle { fill: var(--azul-oferta); }
+    .ic-check path { fill: none; stroke: #fff; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+    .ic { flex: none; width: 24px; height: 24px; fill: none; stroke: var(--azul-oferta); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .ic--sm { width: 22px; height: 22px; }
+    .oferta__extras { display: grid; gap: 12px; padding: 16px 0 20px; }
+    .oferta__extras li { display: flex; gap: 14px; align-items: flex-start; font-size: 15px; line-height: 1.45; }
+    .oferta__faixa { background: #EEF3FB; border-top: 1px solid #E2E8F0; padding: 24px; display: grid; gap: 18px; }
+    .oferta__faixa .preco { border-top: 0; padding-top: 0; }
+    .oferta__faixa .lote-final { background: #fff; max-width: 300px; padding: 14px 20px; border-color: #D5DDEA; border-radius: 12px; font-size: 16px; }
+    .oferta__faixa .lote-final span:last-child { font-size: 20px; }
+    .oferta__faixa .preco__rotulo { letter-spacing: .12em; color: #475569; }
+    .oferta__faixa .preco__valor { color: var(--texto); }
+    .oferta__faixa .preco__valor small { font-family: var(--sans); font-weight: 800; font-size: 26px; margin-top: 12px; }
+    .oferta__faixa .preco__valor strong { font-family: var(--sans); font-weight: 800; font-size: 80px; letter-spacing: -.03em; }
+    .oferta__faixa .btn { background: var(--azul-oferta); border-radius: 12px; }
+    .oferta__faixa .btn:hover { background: #24398A; }
+    .oferta__faixa .transparencia { gap: 12px; font-size: 15px; color: var(--texto); }
+    .oferta__faixa .transparencia li { gap: 14px; align-items: flex-start; }
+    .oferta__faixa .transparencia li::before { content: none; }
+    .oferta .pagamento { display: grid; gap: 14px; justify-items: center; padding: 20px 24px 24px; border-top: 1px solid #E2E8F0; }
+    .pagamento__bandeiras { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px 20px; }
+    .pagamento__bandeiras img { height: 24px; width: auto; }
+    .pagamento__bandeiras .pix { height: 28px; padding-right: 16px; border-right: 1px solid #CBD5E1; }
+    .pagamento__selo { display: flex; align-items: center; gap: 14px; }
+    .compra-segura { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; font-size: 15px; color: var(--azul-oferta); padding-right: 14px; border-right: 1px solid #CBD5E1; }
+    .pagamento__selo .hotmart { height: 44px; width: auto; }
+    .pagamento__bandeiras img[alt="American Express"] { height: 30px; }
+    @media (max-width: 599px) { .oferta__faixa .preco__data { font-size: 13px; } .pagamento__bandeiras img[alt="American Express"] { height: 26px; } }
+    @media (max-width: 599px) { .oferta { padding: 0; } .oferta > .oferta__logo, .oferta > .oferta__lista, .oferta > .oferta__extras { margin-left: 18px; margin-right: 18px; }
+      .oferta__faixa { padding: 22px 18px; } .oferta__faixa .preco__valor strong { font-size: 68px; } .pagamento__bandeiras img { height: 20px; } .pagamento__bandeiras .pix { height: 24px; } }
+    @media (min-width: 900px) { .oferta { padding: 0; } .oferta > .oferta__logo, .oferta > .oferta__lista, .oferta > .oferta__extras { margin-left: 40px; margin-right: 40px; } .oferta__faixa { padding: 28px 40px; } }
 </style>
 
   <script>document.documentElement.classList.add('js');</script>
@@ -506,7 +547,7 @@
         <div class="hero__onda" aria-hidden="true"><canvas class="siri-wave" data-siri-wave></canvas></div>
         <p class="kicker hero__kicker"><span>Pare um <strong>único dia</strong> e venha <strong>dominar</strong> IA</span></p>
         <h1 class="h1">Em 1 dia, você sai com sua rotina mapeada pela IA, um assistente de bolso no WhatsApp 24/7 e executores de tarefas com precisão.</h1>
-        <p class="hero__sub">Consultor de bolso com acesso ao seu computador, layout e proposta, parecer técnico impecável, agente de atendimento autônomo. Ao vivo, você sai do sábado com esses assistentes prontos e funcionando. Não exige programação: você monta tudo conversando.</p>
+        <p class="hero__sub">A IA passa a fazer por você, 10 vezes mais rápido e melhor: acessa seus arquivos, monta layouts inteligentes, apresentações poderosas, propostas e pareceres impecáveis. Sem programação, só conversando.</p>
         <p class="hero__preco"><span class="hero__lote-final">Lote final R$ 97</span><span class="hero__lote-1">Lote 1 <strong>R$ 37</strong></span></p>
         <div><a class="btn btn--largo-mobile" href="#oferta" data-cta="preco" id="cta-hero">Quero montar meus assistentes <svg aria-hidden="true"><use href="#i-seta"/></svg></a></div>
         <ul class="hero__micro">
@@ -773,21 +814,24 @@
   <div class="container">
     <div class="cabeca cabeca--centro revelar">
       <p class="kicker">Investimento</p>
-      <h2 class="h2" id="t-oferta">Seu ingresso para o sábado.</h2>
+      <h2 class="h2" id="t-oferta">Seu ingresso para o <span class="destaque-azul">sábado</span>.</h2>
     </div>
     <div class="oferta-grade">
       <figure class="prova-lado print"><img src="assets/depo/depo-05.webp" alt="Mensagem de participante no WhatsApp" width="1100" height="586" loading="lazy"></figure>
       <div class="oferta revelar">
         <div class="oferta__logo" role="img" aria-label="Protocolo Resolve com iA"></div>
         <ul class="oferta__lista">
-          <li>8 horas de imersão ao vivo</li>
-          <li>Seu Perfil de Trabalho, montado durante o dia</li>
-          <li>O método das 6 etapas, que funciona em qualquer IA</li>
-          <li>Assistentes por função, criados ao vivo</li>
-          <li>Certificado de 8 horas</li>
-          <li class="bonus">Bônus: 10 modelos de comando prontos para copiar e usar</li>
-          <li class="bonus">Grupo de WhatsApp para os materiais</li>
+          <li><svg class="ic-check" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 9"/></svg><span>8 horas de imersão ao vivo</span></li>
+          <li><svg class="ic-check" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 9"/></svg><span>Seu Perfil de Trabalho, montado durante o dia</span></li>
+          <li><svg class="ic-check" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 9"/></svg><span>O método das 6 etapas, que funciona em qualquer IA</span></li>
+          <li><svg class="ic-check" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 9"/></svg><span>Assistentes por função, criados ao vivo</span></li>
+          <li><svg class="ic-check" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 9"/></svg><span>Certificado de 8 horas</span></li>
         </ul>
+        <ul class="oferta__extras">
+          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M19 12v9H5v-9M7.5 8a2.5 2.5 0 010-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 010 5"/></svg><span>Bônus: 10 modelos de comando prontos para copiar e usar</span></li>
+          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8.5 8.5 0 01-12.6 7.4L3 21l1.6-5.1A8.5 8.5 0 1121 12z"/><path d="M8.5 12h.01M12 12h.01M15.5 12h.01" stroke-width="2.6"/></svg><span>Grupo de WhatsApp para os materiais</span></li>
+        </ul>
+        <div class="oferta__faixa">
         <div class="preco">
           <p class="lote-final"><span>Lote final</span><span>R$ 97</span></p>
           <p class="preco__rotulo">Lote 1 · valor atual</p>
@@ -796,18 +840,21 @@
         </div>
         <a class="btn btn--largo" href="#" data-cta="checkout">Quero montar meus assistentes <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
         <ul class="transparencia">
-          <li>Usamos ferramenta gratuita na maior parte do dia.</li>
-          <li>A gravação não está inclusa no ingresso.</li>
-          <li>Garantia de 7 dias a partir da compra, com 100% de volta.</li>
-          <li>Acesso enviado por e-mail logo após a compra.</li>
+          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span>Usamos ferramenta gratuita na maior parte do dia.</span></li>
+          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10l6-3v10l-6-3z"/></svg><span>A gravação não está inclusa no ingresso.</span></li>
+          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-4.5"/></svg><span><strong>Garantia de 7 dias</strong> a partir da compra, com 100% de volta.</span></li>
+          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span>Acesso enviado por e-mail logo após a compra.</span></li>
         </ul>
+        </div>
         <div class="pagamento" aria-label="Formas de pagamento">
-          <img class="pix" src="assets/pag-pix.svg" alt="Pix" width="60" height="22">
-          <img src="assets/pag-visa.svg" alt="Visa" width="40" height="18">
-          <img src="assets/pag-mastercard.svg" alt="Mastercard" width="30" height="18">
-          <img src="assets/pag-elo.svg" alt="Elo" width="30" height="18">
-          <img src="assets/pag-amex.svg" alt="American Express" width="30" height="18">
-          <img class="hotmart" src="assets/hotmart.webp" alt="Compra segura pela Hotmart" width="135" height="34" loading="lazy">
+          <div class="pagamento__bandeiras">
+            <img class="pix" src="assets/pag-pix.svg" alt="Pix" width="60" height="22">
+            <img src="assets/pag-visa.svg" alt="Visa" width="40" height="18">
+            <img src="assets/pag-mastercard.svg" alt="Mastercard" width="30" height="18">
+            <img src="assets/pag-elo.svg" alt="Elo" width="30" height="18">
+            <img src="assets/pag-amex.svg" alt="American Express" width="30" height="18">
+          </div>
+          <div class="pagamento__selo"><img class="hotmart" src="assets/hotmart.webp" alt="Hotmart" width="135" height="34" loading="lazy"></div>
         </div>
       </div>
       <figure class="prova-lado print"><img src="assets/depo/depo-09.webp" alt="Mensagem de participante no WhatsApp" width="1100" height="573" loading="lazy"></figure>
